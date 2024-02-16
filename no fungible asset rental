@@ -1,0 +1,19 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+
+contract NFTAssetRental {
+    address public owner;
+    IERC721 public nft;
+
+    constructor(address _nft) {
+        owner = msg.sender;
+        nft = IERC721(_nft);
+    }
+
+    function rentAsset(uint256 tokenId, uint256 rentalDuration) external {
+        require(nft.ownerOf(tokenId) == msg.sender, "Not the owner of the NFT");
+        // Implement NFT rental logic here
+    }
+}
